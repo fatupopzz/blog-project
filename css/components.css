@@ -1,0 +1,194 @@
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+button,
+.btn {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.5rem 1.25rem;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.btn-primary,
+#search-btn {
+  background-color: var(--forest);
+  color: var(--cream);
+}
+
+.btn-primary:hover,
+#search-btn:hover {
+  background-color: var(--amber);
+  color: var(--brown);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--surface);
+  color: var(--brown-mid);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--sage);
+  color: var(--brown);
+}
+
+.btn-danger {
+  background-color: #f2ded8;
+  color: #b85c38;
+  border: 1px solid #f2c4ad;
+}
+
+.btn-danger:hover {
+  background-color: #b85c38;
+  color: var(--cream);
+}
+
+/* ── Inputs & selects ─────────────────────────────────────────────────────── */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea,
+select {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--brown);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.55rem 1rem;
+  width: 100%;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px rgba(111, 143, 114, 0.15);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--brown-soft);
+  font-style: italic;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ── Post card ────────────────────────────────────────────────────────────── */
+.post-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(74, 55, 40, 0.12);
+}
+
+.post-title {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--brown);
+  line-height: 1.4;
+}
+
+.post-body {
+  font-size: 0.9rem;
+  color: var(--brown-mid);
+  flex: 1;
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  background-color: rgba(111, 143, 114, 0.15);
+  color: var(--forest);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-style: normal;
+}
+
+.btn-detail {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--amber);
+  font-style: italic;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition);
+  width: fit-content;
+}
+
+.btn-detail:hover {
+  border-bottom-color: var(--amber);
+  color: var(--amber);
+}
+
+/* ── Pagination buttons ───────────────────────────────────────────────────── */
+.page-btn {
+  background-color: var(--surface);
+  color: var(--brown-mid);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.page-btn:hover {
+  background-color: var(--sage);
+  color: var(--brown);
+}
+
+.page-btn.active {
+  background-color: var(--forest);
+  color: var(--cream);
+  border-color: var(--forest);
+}
+
+/* ── Form container ───────────────────────────────────────────────────────── */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  color: var(--brown-soft);
+  letter-spacing: 0.03em;
+}
+
+.field-error {
+  font-size: 0.8rem;
+  color: #b85c38;
+  font-style: italic;
+}
