@@ -33,3 +33,15 @@ export async function createPost(data) {
   if (!res.ok) throw new Error("Error al crear post");
   return res.json();
 }
+
+export async function getPostsByTag(tag) {
+  const res = await fetch(`${BASE_URL}/posts/tag/${tag}`);
+  if (!res.ok) throw new Error("Error al filtrar por tag");
+  return res.json();
+}
+
+export async function getTags() {
+  const res = await fetch(`${BASE_URL}/posts/tags`);
+  if (!res.ok) throw new Error("Error al cargar tags");
+  return res.json();
+}
