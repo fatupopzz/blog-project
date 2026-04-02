@@ -3,17 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog</title>
+  <title>The Commonplace</title>
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/components.css" />
 </head>
 <body>
-  <nav id="navbar"></nav>
-  <main id="app"></main>
 
-  <div id="posts-container"></div>
+  <nav id="navbar">
+    <a href="index.html">Inicio</a>
+    <a href="create.html">Nueva publicación</a>
+    <a href="profile.html">Perfil</a>
+  </nav>
 
+  <main id="app">
+
+    <header class="page-header">
+      <h1>Blog</h1>
+    </header>
+
+    <!-- Search and filters -->
+    <section id="filters">
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Buscar posts..." />
+        <button id="search-btn">Buscar</button>
+      </div>
+
+      <div class="filter-group">
+        <select id="tag-filter">
+          <option value="">Filtrar por tag</option>
+        </select>
+
+        <input
+          type="number"
+          id="user-filter"
+          placeholder="Filtrar por usuario ID"
+          min="1"
+        />
+      </div>
+    </section>
+
+    <!-- Posts grid -->
+    <div id="posts-container"></div>
+
+  </main>
 
   <script type="module" src="js/pages/home.js"></script>
 </body>
