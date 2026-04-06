@@ -102,16 +102,29 @@ function handleUserFilter() {
 }
 
 // ── Render post cards and pagination ─────────────────────────────────────────
+
+
+
+function getCustomPosts() {
+  return JSON.parse(localStorage.getItem("customPosts") || "[]");
+}
+
+
 function renderPosts(posts, total, paginar = true) {
   container.innerHTML = "";
 
-  if (!posts || posts.length === 0) {
+  const customPosts = getCustomPosts();
+
+  // 👇 Mezclar posts locales con los de la API
+  const allPosts = [...customPosts, ...posts];
+
+  if (!allPosts || allPosts.length === 0) {
     container.innerHTML =
       "<p class='empty'>No se encontraron publicaciones.</p>";
     return;
   }
 
-  posts.forEach((post) => {
+  allPosts.forEach((post) => {
     const card = createPostCard(post);
     container.appendChild(card);
   });

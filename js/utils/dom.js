@@ -17,14 +17,24 @@ export function showSuccess(msg) {
 export function createPostCard(post) {
   const card = document.createElement("article");
   card.className = "post-card";
+
+  const tags = post.tags || [];
+
   card.innerHTML = `
     <h2 class="post-title">${post.title}</h2>
     <p class="post-body">${post.body.slice(0, 100)}...</p>
+
     <div class="post-meta">
-      <span class="post-tags">${post.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</span>
+      <span class="post-tags">
+        ${tags.map((t) => `<span class="tag">${t}</span>`).join("")}
+      </span>
     </div>
+
+    ${post.isCustom ? `<span class="tag">Nuevo</span>` : ""}
+
     <a href="detail.html?id=${post.id}" class="btn-detail">Ver más</a>
   `;
+
   return card;
 }
 

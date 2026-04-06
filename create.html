@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nueva publicación</title>
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-brand">The Commonplace</a>
+    <a href="create.html" class="active">Nueva publicación</a>
+    <a href="profile.html">Perfil</a>
+  </nav>
+
+  <main id="app">
+
+    <header class="page-header">
+      <h1>Nueva publicación</h1>
+    </header>
+
+    <form id="create-form" class="form-container">
+
+      <div class="form-group">
+        <label>Título</label>
+        <input type="text" id="title" placeholder="Título del post" />
+        <span class="field-error" id="title-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label>Contenido</label>
+        <textarea id="body" placeholder="Escribe tu publicación..."></textarea>
+        <span class="field-error" id="body-error"></span>
+      </div>
+
+      <div class="form-group">
+        <label>User ID</label>
+        <input type="number" id="userId" value="1" />
+      </div>
+
+      <button class="btn-primary" type="submit">Publicar</button>
+
+    </form>
+
+  </main>
+
+  <script type="module" src="js/pages/create.js"></script>
+</body>
+</html>
