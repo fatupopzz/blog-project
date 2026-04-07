@@ -23,3 +23,6 @@ js/utils/     → helpers de DOM y validación
 
 ## API
 [DummyJSON](https://dummyjson.com/docs/posts)
+
+## Video
+[Video Youtube](https://youtu.be/8MLfJeS6jPs)
