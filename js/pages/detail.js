@@ -10,10 +10,12 @@ const postId = params.get("id");
 
 // ── Render post ───────────────────────────────────────────────────────────────
 function renderPost(post) {
+  const tags = Array.isArray(post.tags) ? post.tags : [];
+
   postContainer.innerHTML = `
     <article class="post-full">
       <div class="post-full-tags">
-        ${post.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
+        ${tags.map((t) => `<span class="tag">${t}</span>`).join("")}
       </div>
       <h1 class="post-full-title">${post.title}</h1>
       <div class="post-full-meta">
@@ -76,8 +78,8 @@ async function init() {
 
   try {
     // ── 1. Buscar en localStorage ───────────────────────
-    const customPosts = JSON.parse(localStorage.getItem("customPosts") || []);
-    const customPost = customPosts.find(p => p.id == postId);
+    const customPosts = JSON.parse(localStorage.getItem("customPosts") || "[]");
+    const customPost = customPosts.find((p) => String(p.id) === String(postId));
 
     let post;
 

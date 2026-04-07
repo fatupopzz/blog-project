@@ -3,6 +3,16 @@ import { validatePost } from "../utils/validation.js";
 
 const form = document.getElementById("create-form");
 
+function getCustomPosts() {
+  return JSON.parse(localStorage.getItem("customPosts") || "[]");
+}
+
+function saveCustomPost(post) {
+  const customPosts = getCustomPosts();
+  customPosts.unshift(post);
+  localStorage.setItem("customPosts", JSON.stringify(customPosts));
+}
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -27,8 +37,25 @@ form.addEventListener("submit", async (e) => {
   }
 
   try {
-    // ── POST to API ───────────────────────────────────────────
-    await createPost({ title, body, userId });
+    // ── POST to API (opcional, DummyJSON no persiste realmente) ────────────
+    try {
+      await createPost({ title, body, userId: Number(userId) });
+    } catch (_) {
+      // Si falla la API, seguimos para guardar localmente.
+    }
+
+    const localPost = {
+      id: `local-${Date.now()}`,
+      title,
+      body,
+      userId: Number(userId) || 1,
+      tags: [],
+      views: 0,
+      reactions: { likes: 0 },
+      isCustom: true,
+    };
+
+    saveCustomPost(localPost);
 
     // ── Visual feedback ───────────────────────────────────────
     showToast("Post creado correctamente");
