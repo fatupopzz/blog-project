@@ -7,6 +7,13 @@ const authorContainer = document.getElementById("author-card");
 // ── Get post ID from URL ───────────────────────────────────────────────────────
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");
+let isCustomPost = false;
+
+function removeCustomPostById(id) {
+  const customPosts = JSON.parse(localStorage.getItem("customPosts") || "[]");
+  const filteredPosts = customPosts.filter((p) => String(p.id) !== String(id));
+  localStorage.setItem("customPosts", JSON.stringify(filteredPosts));
+}
 
 // ── Render post ───────────────────────────────────────────────────────────────
 function renderPost(post) {
@@ -55,6 +62,10 @@ function renderAuthor(user) {
 
 // ── Simulate delete ───────────────────────────────────────────────────────────
 function handleDelete() {
+  if (isCustomPost) {
+    removeCustomPostById(postId);
+  }
+
   const article = document.querySelector(".post-full");
   article.style.opacity = "0.4";
   article.style.pointerEvents = "none";
@@ -85,6 +96,7 @@ async function init() {
 
     if (customPost) {
       // POST LOCAL
+      isCustomPost = true;
       post = customPost;
       renderPost(post);
 
