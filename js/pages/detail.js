@@ -75,13 +75,37 @@ async function init() {
   showLoading(postContainer);
 
   try {
-    const post = await getPostById(postId);
-    renderPost(post);
+    // ── 1. Buscar en localStorage ───────────────────────
+    const customPosts = JSON.parse(localStorage.getItem("customPosts") || []);
+    const customPost = customPosts.find(p => p.id == postId);
 
-    // Load author in parallel
-    showLoading(authorContainer);
-    const user = await getUserById(post.userId);
-    renderAuthor(user);
+    let post;
+
+    if (customPost) {
+      // POST LOCAL
+      post = customPost;
+      renderPost(post);
+
+      //  usuario simulado (mínimo necesario)
+      authorContainer.innerHTML = `
+        <div class="author-card">
+          <div class="author-info">
+            <p class="author-name">Usuario local</p>
+            <p class="author-username">@user${post.userId}</p>
+          </div>
+        </div>
+      `;
+
+    } else {
+      //POST DE API
+      post = await getPostById(postId);
+      renderPost(post);
+
+      showLoading(authorContainer);
+      const user = await getUserById(post.userId);
+      renderAuthor(user);
+    }
+
   } catch (err) {
     showError(postContainer, "Error al cargar el post.");
     authorContainer.innerHTML = "";
